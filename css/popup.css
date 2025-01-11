@@ -1,0 +1,594 @@
+/*===== POP-UP =====*/
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 178, 0, 0.5);
+  backdrop-filter: blur(20px);
+  
+  /* display: none; */
+  opacity: 0; /* Початковий стан - невидимий */
+  visibility: hidden; /* Прихований */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Анімація плавного показу */
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-overlay.active {
+  /* display: flex; */
+  opacity: 1; /* Зміна прозорості */
+  visibility: visible;
+}
+  
+.popup {
+  background-color: #fff;
+  padding: 30px 60px;
+  border-radius: 30px;
+  max-width: 750px;
+  width: 90%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.close-popup {
+  position: absolute;
+  top: 57px;
+  right: 57px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+  
+.popup table {
+  /* width: 100%; */
+  border-collapse: collapse;
+  table-layout: auto;
+  width: auto;
+}
+
+.popup table td {
+  padding: 10px 15px;
+  vertical-align: top;
+}
+
+.text-position {
+  white-space: nowrap;
+}
+
+.text-description {
+  white-space: normal; /* Опис може переноситися, якщо необхідно */
+}
+  
+.popup table tr.yellow-line {
+    position: relative;
+    z-index: 1; /* Щоб текст був над смужкою */
+}
+  
+.popup table tr.yellow-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -60px; 
+    width: calc(100% + 60px); /* Ширина до кінця тексту, враховуючи паддінг */
+    height: 100%;
+    background: linear-gradient(135deg, #FFCC54 0%, #FFB300 100%);
+    z-index: -1; /* Смужка позаду тексту */
+    border-radius: 0px 15px 15px 0; 
+}
+  
+  /* Стилі тексту */
+.text-position {
+  font-size: 16px;
+  font-weight: 500;
+  /* min-width: 140px; */
+}
+
+.text-description {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/*=====END POP-UP =====*/
+
+
+
+
+
+
+/*===== КОРЗИНА =====*/
+/* Стікер корзини */
+.cart-sticker {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #FFCC54 0%, #FFB300 100%);
+  color: #fff;
+  border-radius: 15px;
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  font-size: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+.cart-sticker #cart-count {
+  background: #191919;
+  color: #fff;
+  border-radius: 50%;
+  padding: 3px 6px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.cart-sticker img {
+  width: 40px;
+}
+
+/* Попап корзини */
+/* блюр фон для попапа */
+.cart-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 178, 0, 0.5);
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.cart-popup-overlay.hidden {
+  display: none;
+}
+
+.cart-popup {
+  background-color: #fff;
+  border-radius: 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  padding: 60px;
+  max-width: 1250px;
+  max-height: 650px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+}
+
+/*== Ліва частина попапу ==*/
+.cart-popup-block {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  justify-content: space-between;
+}
+
+.your-order {
+  background-color: #191919;
+  color: #fff;
+  padding: 40px 30px 40px 30px;
+  border-radius: 40px;
+  flex: 1;
+}
+
+#cart-items {
+  padding-right: 15px;
+}
+
+#order-cart-items {
+  padding-right: 15px;
+}
+
+.cart-popup-btn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-popup .your-order ul {
+  list-style: none;
+  margin: 20px 0;
+  padding: 0;
+  padding-bottom: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-popup li {
+  /* border-bottom: 1px solid #ddd; */
+  padding: 10px 0;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  font-weight: 500;
+}
+
+.cart-popup li img {
+  width: 60px;
+  height: 100%; 
+  border-radius: 10px; 
+  background-color: #fff;
+}
+
+/* кнопка очистити корзину */
+.cart-popup #clear-cart {
+  cursor: pointer;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.cart-popup h4 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/*текст замовлення в корзині*/
+.your-order_text-block {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/*хрестик видалення товару*/
+.remove-item {
+  background: none;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  text-align: right;
+}
+
+/*блок тексту із ціною і хрестиком в корзині*/
+.your-order_price-block {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.your-order_amount-block {
+  display: flex;
+  align-items: center;
+}
+
+.your-order_price-block .remove-item {
+  margin-left: auto;
+}
+
+
+/*== Права частина попапу ==*/
+.your-order-secondary-container {
+
+}
+
+.your-order-secondary {
+  margin-top: 30px;
+}
+
+.your-order-secondary h4 {
+  margin-bottom: 30px;
+  padding-left: 15px;
+}
+
+#recommended-products {
+  list-style: none;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  max-height: 350px;
+  overflow-x: hidden;
+  overflow-y: auto; 
+  padding: 0px 15px 0px 15px;
+}
+
+.recommended-products-block {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.recommended-products-block-base {
+  display: flex;
+  gap: 20px;
+}
+
+#recommended-products li {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  /* gap: 20px; */
+  font-weight: 500;
+}
+
+.recommended-products-image {
+  width: 60px;
+  height: 100%; 
+  border-radius: 10px; 
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.recommended-products-info {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.quantity-block {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-left: 60px;
+}
+
+.quantity-block button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  color: white;
+  font-size: 34px;
+  font-weight: 500;
+  width: 35px;
+  height: 35px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.quantity-block .quantity {
+  font-size: 16px;
+}
+
+.decrease-qty {
+  background-color: #D9D9D9;
+}
+
+.increase-qty {
+  background-color: #ffb300;
+}
+
+.recommended-products-price-block {
+  text-align: right;
+  font-size: 14px;
+}
+
+.recommended-products-current-price {
+  font-weight: bold;
+  color: #333;
+}
+
+.recommended-products-old-price,
+.recommended-products-old-price-secondary {
+  font-size: 12px;
+  color: #a2a2a2;
+  text-decoration: line-through;
+}
+
+.cart-popup-btn-left {
+  background-color: #D9D9D9;
+  color: #191919;
+  border: none;
+  padding: 20px 50px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  width: 270px;
+}
+
+.cart-popup-btn-left:hover {
+  transform: scale(1.05);
+}
+
+.cart-popup-btn-right {
+  background: linear-gradient(135deg, #FFCC54 0%, #FFB300 100%);
+  color: #191919;
+  border: none;
+  padding: 20px 50px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  width: 270px;
+}
+
+.cart-popup-btn-right:hover {
+  transform: scale(1.05);
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.between {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex: 1;
+}
+
+/*===== END КОРЗИНА =====*/
+
+
+
+
+
+
+
+
+
+
+.your-order-secondary-container-ordering {
+
+}
+
+.ordering-title-main {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.ordering-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.mrg-bt-40 {
+  margin-bottom: 40px;
+}
+
+label {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+label input {
+  padding: 15px;
+  border: 1px solid #A2A2A2;
+  border-radius: 30px;
+  font-size: 14px;
+  font-family: "Montserrat", serif;
+}
+
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 25px 0;
+}
+
+.payment-options label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Робимо радіокнопки невидимими, але залишаємо їх доступними для валідації */
+.payment-options input[type="radio"] {
+  opacity: 0; /* Приховуємо візуально */
+  position: absolute; /* Забираємо з основного потоку */
+  pointer-events: none; /* Забороняємо взаємодію напряму */
+}
+
+/* Кастомна радіокнопка */
+.payment-options .custom-radio {
+  width: 14px;
+  height: 14px;
+  border: 1px solid #FFB300; /* Жовте зовнішнє кільце */
+  border-radius: 50%;
+  background: white; /* Білий внутрішній круг */
+  display: inline-block;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Активний стан: заповнення */
+.payment-options input[type="radio"]:checked + .custom-radio {
+  background: #fff; /* Жовтий внутрішній круг */
+}
+
+/* Внутрішній білий круг */
+.payment-options .custom-radio::after {
+  content: '';
+  width: 9px; /* Розмір білого внутрішнього круга */
+  height: 9px;
+  background: #FFB300;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0; /* Невидимий у неактивному стані */
+  transition: opacity 0.3s ease;
+}
+
+/* Показуємо білий круг у вибраному стані */
+.payment-options input[type="radio"]:checked + .custom-radio::after {
+  opacity: 1; /* Робимо внутрішній круг видимим */
+}
+
+small {
+  display: block;
+  color: #aaa;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+.form-footer {
+  text-align: left;
+}
+
+.cart-popup-btn-right-ordering {
+  background: linear-gradient(135deg, #FFCC54 0%, #FFB300 100%);
+  color: #191919;
+  border: none;
+  padding: 20px 50px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.cart-popup-btn-right-ordering:hover {
+  transform: scale(1.05);
+}
+
+.popup-order-btn {
+  display: none;
+  background: linear-gradient(135deg, #FFCC54 0%, #FFB300 100%);
+  color: #191919;
+  border: none;
+  padding: 12px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.popup-order-btn:hover {
+  background: none;
+  border: 1px solid #FFB300;
+  color: #FFB300;
+  transform: scale(1.05);
+}

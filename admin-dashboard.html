@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адмінка Kondor Device</title>
+    <link href="css/admin.css" rel="stylesheet" type="text/css">
+
+    <link rel="icon" href="image/favicon.ico.svg" type="image/x-icon">
+    <link rel="apple-touch-icon" href="image/favicon.ico.svg">
+</head>
+<body>
+    <header>
+        <h1>Адмінка Kondor Device</h1>
+    </header>
+    <main>
+        <!-- Лінійки -->
+        <section>
+            <h2>Управління лінійками</h2>
+            <form id="add-line-form">
+                <label>
+                    Назва лінійки:
+                    <input type="text" id="line-name" required>
+                </label>
+                <button type="submit">Додати лінійку</button>
+            </form>
+            <div id="lines-container">
+                <!-- Список лінійок -->
+            </div>
+        </section>
+
+        <!-- Продукти -->
+        <section>
+            <h2>Управління продуктами</h2>
+            <form id="add-product-form">
+                <label>
+                    Лінійка:
+                    <select id="product-line" required>
+                        <!-- Список лінійок -->
+                    </select>
+                </label>
+                <label>
+                    Назва товару:
+                    <input type="text" id="product-name" required>
+                </label>
+                <label>
+                    Тип товару:
+                    <input type="text" id="product-type" required>
+                </label>
+                <label>
+                    Ціна:
+                    <input type="number" id="product-price" required>
+                </label>
+                <label>
+                    Знижка (%):
+                    <input type="number" id="product-discount" min="0" max="100">
+                </label>
+                <label>
+                    Ціна зі знижкою:
+                    <input type="text" id="discounted-price" disabled>
+                </label>
+                <label>
+                    Комплект поставки:
+                    <textarea id="product-bundle"></textarea>
+                </label>
+                <label>
+                    Характеристики:
+                    <textarea id="product-specs"></textarea>
+                </label>
+                <button type="submit">Додати товар</button>
+            </form>
+            <div id="products-container">
+                <!-- Список продуктів -->
+            </div>
+        </section>
+      
+    </main>
+    <script src="js/admin.js"></script>
+</body>
+</html>

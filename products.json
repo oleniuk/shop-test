@@ -1,0 +1,87 @@
+{
+  "starlight": {
+    "id": "starlight",
+    "title": "МММеханічна клавіатура",
+    "name": "Kondor Starlight",
+    "price": "1899 ГРН",
+    "oldPrice": "2713 ГРН",
+    "discount": "30%",
+    "colors": ["white", "yellow", "black", "gray"],
+    "mainImage": "image/main/starlight-main.png",
+    "thumbnailImages": [
+      "image/thumb/starlight-1.png",
+      "image/thumb/starlight-2.png",
+      "image/thumb/starlight-3.png"
+    ],
+    "specs": [
+      { "label": "Кількість клавіш", "value": "61" },
+      { "label": "Свічі", "value": "коричневі тактильні" },
+      { "label": "Тип свічів", "value": "лінійні (не клікаючі)" },
+      { "label": "Ресурс свічів", "value": "50 млн натискань" },
+      { "label": "Підсвітка", "value": "Rainbow LED (20 вбудованих режима)" },
+      { "label": "Тип підключення", "value": "дротова USB Type-C" },
+      { "label": "Технології", "value": "Hot-swap, Anty ghost, N-Key Rollover" },
+      { "label": "Розкладка", "value": "укр/англ" },
+      { "label": "Кейкапи", "value": "ABS кейкапи подвійного лиття" },
+      { "label": "Шумоізоляція", "value": "шумопоглинаючий шар піни EVA + силіконова віброізоляція" },
+      { "label": "Матеріал корпусу", "value": "якісний пластик" },
+      { "label": "Особливості", "value": "бокова RGB підсвітка корпусу клавіатури, 11 режимів, регульовані ніжки на 3 рівні висоти" },
+      { "label": "Сумісність з ОС", "value": "Windows, macOS, Linux" }
+    ],
+    "bundle": [
+      { "icon": "image/icon/type-c-icon.svg", "description": "Знімний білий кабель USB Type-C 1,5м" },
+      { "icon": "image/icon/citrus-candles-icon.svg", "description": "Додаткові Brown Свічі" },
+      { "icon": "image/icon/puller-icon.svg", "description": "Пулер для свічів" },
+      { "icon": "image/icon/qr-icon.svg", "description": "QR код із посиланням на інструкцію" },
+      { "icon": "image/icon/kondor-icon.svg", "description": "Стікери Kondor" }
+    ],
+    "specsButtonText": "Характеристики",
+    "bundleButtonText": "Комплект поставки",
+    "orderButtonText": "Оформити замовлення"
+  },
+
+  "starlight-pro": {
+    "id": "starlight-pro",
+    "title": "МММеханічна клавіатура",
+    "name": "Kondor Starlight PRO",
+    "price": "2699 ГРН",
+    "oldPrice": "3856 ГРН",
+    "discount": "30%",
+    "colors": ["white"],
+    "mainImage": "image/main/starlight-pro-main.png",
+    "thumbnailImages": [
+      "image/thumb/starlight-pro-1.png",
+      "image/thumb/starlight-pro-2.png",
+      "image/thumb/starlight-pro-3.png"
+    ],
+    "specs": [
+      { "label": "Кількість клавіш", "value": "63" },
+      { "label": "PRO", "value": "жовті" },
+      { "label": "Тип свічів", "value": "лінійні (не клікаючі)" },
+      { "label": "Ресурс свічів", "value": "50 млн натискань" },
+      { "label": "Підсвітка", "value": "RGB (22 вбудованих режима)" },
+      { "label": "Тип підключення", "value": "3 типи підключення: USB Type-C/Bluetooth/2.4Ghz" },
+      { "label": "Технології", "value": "Hot-swap, Anty ghost, N-Key Rollover" },
+      { "label": "Розкладка", "value": "укр/англ" },
+      { "label": "Кейкапи", "value": "ABS кейкапи подвійного лиття" },
+      { "label": "Шумоізоляція", "value": "шумопоглинаючий шар піни EVA + силіконова віброізоляція" },
+      { "label": "Ємність акумулятора", "value": "1650 мА/год" },
+      { "label": "Матеріал корпусу", "value": "якісний пластик" },
+      { "label": "Особливості", "value": "Програмне забезпечення для налаштування підсвітки та макросів, бокова RGB підсвітка корпусу клавіатури, 12 режимів, регульовані ніжки на 3 рівні висоти" },
+      { "label": "Сумісність з ОС", "value": "Windows, macOS, Linux, Android" }
+    ],
+    "bundle": [
+      { "icon": "image/icon/type-c-icon.svg", "description": "Знімний білий кабель USB Type-C 1,5м" },
+      { "icon": "image/icon/citrus-candles-icon.svg", "description": "Додаткові Yellow Свічі" },
+      { "icon": "image/icon/keycaps-icon.svg", "description": "Додаткові кейкапи" },
+      { "icon": "image/icon/puller-icon.svg", "description": "Пулер для свічів" },
+      { "icon": "image/icon/usb-icon.svg", "description": "USB 2.4G передавач" },
+      { "icon": "image/icon/qr-icon.svg", "description": "QR код із посиланням на інструкцію та програмне забезпечення" },
+      { "icon": "image/icon/kondor-icon.svg", "description": "Стікери Kondor" }
+    ],
+    "specsButtonText": "Характеристики",
+    "bundleButtonText": "Комплект поставки",
+    "orderButtonText": "Оформити замовлення"
+  }
+}
+

@@ -1,0 +1,116 @@
+ /* Загальні стилі */
+ body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 24px;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h2 {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input, textarea, select, button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Контейнер лінійок */
+#lines-container, #products-container {
+    margin-top: 20px;
+}
+
+.line, .product {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: #fafafa;
+    /* display: flex; */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.line-edit input {
+    margin-right: 10px;
+    flex: 1;
+}
+
+.line-edit button, .product button {
+    margin-left: 5px;
+}
+
+.product h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.product p {
+    margin: 5px 0;
+    color: #666;
+}
+
+/* Списки */
+select {
+    background: white;
+}
+
+textarea {
+    resize: none;
+}

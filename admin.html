@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+
+    <!-- заборона індексації сторінки -->
+    <meta name="robots" content="noindex, nofollow"> 
+
+</head>
+<body>
+    
+    <form id="loginForm">
+        <input type="text" name="username" placeholder="Логін" required />
+        <input type="password" name="password" placeholder="Пароль" required />
+        <button type="submit">Увійти</button>
+      </form>
+
+      <script>
+        document.getElementById("loginForm").addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const username = e.target.username.value;
+          const password = e.target.password.value;
+      
+          const response = await fetch("https://vps-kondordevice.onrender.com/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password }),
+          });
+      
+          const data = await response.json();
+          if (response.ok) {
+            localStorage.setItem("token", data.token);
+            window.location.href = "/admin-dashboard.html"; // Перехід до панелі адміністратора
+          } else {
+            alert(data.message);
+          }
+        });
+      </script>
+
+<script src="server/auth.js"></script>
+</body>
+</html>

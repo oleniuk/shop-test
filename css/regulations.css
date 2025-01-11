@@ -1,0 +1,75 @@
+/* Загальні стилі для секції */
+.warranty-section {
+  margin: 0 auto;
+}
+
+/* Заголовок */
+.warranty-header {
+  background: url('../image/yellow-block.png') center/cover no-repeat;
+  padding: 80px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.warranty-header h2 {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 700;
+  color: #191919;
+}
+
+/* Основний текст */
+.warranty-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.warranty-content {
+  line-height: 1.8;
+  color: #191919;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: justify;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+.warranty-content h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #191919;
+    margin: 0;
+}
+
+.warranty-content p {
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+/* Кнопка контакту */
+.warranty-contact {
+  display: inline-block;
+  text-align: center;
+  background: linear-gradient(135deg, #FFCC54 0%, #FFB300 100%);
+  padding: 25px 50px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 100px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.warranty-contact:hover {
+    transform: scale(1.05);
+}
+
+.warranty-contact a {
+  color: #191919;
+  text-decoration: none;
+}
+
+.tg_link {
+    font-weight: 500;
+}

@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "title": "1Механічна клавіатура",
+        "name": "1Kondor Moonlight PRIME",
+        "price": 3199,
+        "oldPrice": 4199,
+        "color": "Білий",
+        "image": "image/other-products/product1.png"
+    },
+    {
+        "id": 2,
+        "title": "2Ігрова миша",
+        "name": "2Kondor Orion",
+        "price": 999,
+        "oldPrice": 1199,
+        "color": "Чорний",
+        "image": "image/other-products/product1.png"
+    },
+    {
+        "id": 3,
+        "title": "3Kondor Orion",
+        "name": "3Ігрова миша",
+        "price": 999,
+        "oldPrice": 1199,
+        "color": "Чорний",
+        "image": "image/other-products/product1.png"
+    },
+    {
+        "id": 4,
+        "title": "4Kondor Moonlight PRIME",
+        "name": "4Механічна клавіатура",
+        "price": 3199,
+        "oldPrice": 4199,
+        "color": "Білий",
+        "image": "image/other-products/product1.png"
+    },
+    {
+        "id": 5,
+        "title": "5Kondor Moonlight PRIME",
+        "name": "5Механічна клавіатура",
+        "price": 3199,
+        "oldPrice": 4199,
+        "color": "Білий",
+        "image": "image/other-products/product1.png"
+    }
+]
