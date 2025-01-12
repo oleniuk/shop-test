@@ -55,7 +55,7 @@ document.getElementById("add-line-form").addEventListener("submit", async (e) =>
         const additionalImages = Array.from(document.querySelectorAll(".additional-image-input"))
             .map(input => input.value.trim())
             .filter(image => image);
-        const colors = Array.from(document.querySelectorAll(".color-input-container")).map(container => ({
+        const colors = Array.from(document.querySelectorAll(".color-circle")).map(container => ({
             hex: container.querySelector(".color-hex").value.trim(),
             name: container.querySelector(".color-name").value.trim(),
         }));
@@ -105,8 +105,8 @@ document.getElementById("add-line-form").addEventListener("submit", async (e) =>
 
     // Додавання кольору
     document.getElementById("add-color").addEventListener("click", () => {
-        const colorContainer = document.createElement("div");
-        colorContainer.classList.add("color-input-container");
+        const colorContainer = document.createElement("div"); // Замінено colorsContainer на colorContainer
+        colorContainer.classList.add("color-circle");
         colorContainer.innerHTML = `
             <input type="color" class="color-hex">
             <input type="text" class="color-name" placeholder="Назва кольору">
@@ -215,27 +215,138 @@ document.getElementById("add-line-form").addEventListener("submit", async (e) =>
     function displayProducts(products) {
         const productsContainer = document.getElementById("products-container");
         productsContainer.innerHTML = ""; // Очистити перед додаванням
-
+    
         products.forEach((product) => {
+            console.log("Отриманий продукт:", product); // Для відладки
+    
+            const lineName = product.lineId?.name || "Невідома лінійка";
+            const additionalImagesHTML = Array.isArray(product.additionalImages)
+                ? product.additionalImages.map((img) => `<li><a href="${img}" target="_blank">${img}</a></li>`).join("")
+                : "<p>Додаткових фото немає</p>";
+    
+            // Відображення кольорів
+            const colorsHTML = Array.isArray(product.colors)
+                ? product.colors
+                      .map(
+                          (color) =>
+                              `<li>
+                                  <span class="color-circle" style="background-color: ${color.hex}; display: inline-block; width: 20px; height: 20px; border-radius: 50%;"></span>
+                                  ${color.name}
+                              </li>`
+                      )
+                      .join("")
+                : "<p>Кольори не вказані</p>";
+    
+            const specsHTML = Array.isArray(product.specs)
+                ? product.specs.map((spec) => `<li>${spec}</li>`).join("")
+                : "<p>Характеристики відсутні</p>";
+    
+            const bundleHTML = Array.isArray(product.bundle)
+                ? product.bundle.map((bundleItem) => `<li>${bundleItem}</li>`).join("")
+                : "<p>Комплектація відсутня</p>";
+    
             const productElement = document.createElement("div");
             productElement.classList.add("product");
-
+    
             productElement.innerHTML = `
-                <h3>${product.name}</h3>
-                <p>Тип: ${product.type}</p>
+                <h3>Лінійка: ${lineName}</h3>
+                <p>Назва товару: ${product.name}</p>
+                <p>Тип товару: ${product.type}</p>
                 <p>Ціна: ${product.price} грн</p>
                 <p>Знижка: ${product.discount}%</p>
-                <p>Ціна зі знижкою: ${(product.price - (product.price * product.discount) / 100).toFixed(2)} грн</p>
+                <p>Ціна зі знижкою: ${product.discountedPrice} грн</p>
+                <p>Головне фото: <a href="${product.mainImage}" target="_blank">${product.mainImage}</a></p>
+                <p>Додаткові фото:</p>
+                <ul>${additionalImagesHTML}</ul>
+                <p>Кольори:</p>
+                <ul>${colorsHTML}</ul>
+                <p>Характеристики:</p>
+                <ul>${specsHTML}</ul>
+                <p>Комплектація:</p>
+                <ul>${bundleHTML}</ul>
+                <p>Вибрана кнопка: ${product.mainButton === "order" ? "Оформити замовлення" : "Передзамовлення"}</p>
+                
+                <button class="save-product-btn" data-id="${product._id}">Зберегти</button>
                 <button class="delete-product-btn" data-id="${product._id}">Видалити</button>
             `;
-
+    
             productsContainer.appendChild(productElement);
         });
-
+    
         document.querySelectorAll(".delete-product-btn").forEach((btn) => {
             btn.addEventListener("click", deleteProduct);
         });
+    
+        document.querySelectorAll(".save-product-btn").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                const productId = e.target.dataset.id;
+                editProduct(productId); // Виклик функції редагування
+            });
+        });
     }
+
+    async function editProduct(productId) {
+        try {
+            const product = await fetch(`https://vps-kondordevice.onrender.com/api/products/${productId}`).then((res) =>
+                res.json()
+            );
+
+            document.getElementById("product-line").value = product.lineId._id;
+            document.getElementById("product-name").value = product.name;
+            document.getElementById("product-type").value = product.type;
+            document.getElementById("product-price").value = product.price;
+            document.getElementById("product-discount").value = product.discount;
+            document.getElementById("product-main-image").value = product.mainImage;
+
+            const additionalImagesContainer = document.getElementById("additional-images-container");
+            additionalImagesContainer.innerHTML = "";
+            product.additionalImages.forEach((img) => {
+                const input = document.createElement("input");
+                input.type = "text";
+                input.value = img;
+                input.classList.add("additional-image-input");
+                additionalImagesContainer.appendChild(input);
+            });
+
+            const colorsContainer = document.getElementById("colors-container");
+            colorsContainer.innerHTML = "";
+            product.colors.forEach((color) => {
+                const colorContainer = document.createElement("div");
+                colorContainer.classList.add("color-circle");
+                colorContainer.innerHTML = `
+                    <input type="color" class="color-hex" value="${color.hex}">
+                    <input type="text" class="color-name" value="${color.name}">
+                `;
+                colorsContainer.appendChild(colorContainer);
+            });
+
+            const specsContainer = document.getElementById("specs-container");
+            specsContainer.innerHTML = "";
+            product.specs.forEach((spec) => {
+                const input = document.createElement("input");
+                input.type = "text";
+                input.value = spec;
+                input.classList.add("specs-item");
+                specsContainer.appendChild(input);
+            });
+
+            const bundleContainer = document.getElementById("bundle-container");
+            bundleContainer.innerHTML = "";
+            product.bundle.forEach((bundleItem) => {
+                const input = document.createElement("input");
+                input.type = "text";
+                input.value = bundleItem;
+                input.classList.add("bundle-item");
+                bundleContainer.appendChild(input);
+            });
+
+            document.querySelector(`input[name="main-button"][value="${product.mainButton}"]`).checked = true;
+        } catch (error) {
+            console.error("Помилка завантаження продукту для редагування:", error);
+        }
+    }
+    
+       
 
     function populateLineSelect(lines) {
         const lineSelect = document.getElementById("product-line");
