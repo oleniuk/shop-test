@@ -78,15 +78,22 @@ document.addEventListener("DOMContentLoaded", () => {
         productCard.innerHTML = `
             <div class="product-images">
                 <img class="main-image" src="${product.image || ''}" alt="${product.name}">
-                <div class="thumbnail-images"></div>
+                <div class="thumbnail-images" src="${thumbnail.images || ''}" alt="${thumbnail.images}"></div>
             </div>
+
             <div class="product-details">
                 <h3 class="product-title">
                     <span class="product-title-type">${product.type}</span><br>
                     <span class="product-title-name">${product.name}</span>
                 </h3>
+
+                <div class="color-options">
+                    <span class="color-circle ${product.color}" data-color="${product.color}"></span>
+                </div>
+
                 <div class="product-price">
                     <span class="current-price">${product.price} ГРН</span>
+
                     <div class="price-info-block">
                         ${product.discount > 0 ? `
                         <span class="discount-info">Економія: ${product.discount}%</span>
@@ -94,6 +101,23 @@ document.addEventListener("DOMContentLoaded", () => {
                         ` : ""}
                     </div>
                 </div>
+
+                <div class="dropdown-buttons">
+                    <p class="dropdown-btn" data-popup-type="specs">
+                      Характеристики
+                      <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 9l6 6 6-6"></path>
+                      </svg>
+                    </p>
+      
+                    <p class="dropdown-btn" data-popup-type="bundle">
+                      Комплект поставки
+                      <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 9l6 6 6-6"></path>
+                      </svg>
+                    </p>
+                </div>
+
                 <button class="order-btn">Оформити замовлення</button>
             </div>
         `;
